@@ -1,0 +1,12 @@
+
+/* // Import Bootstrap's SCSS functions and variables */
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+
+/* // Override the primary color */
+$primary: #ff5733; 
+/* // Set your custom color here */
+
+/* // Import Bootstrap to apply the changes */
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
+
