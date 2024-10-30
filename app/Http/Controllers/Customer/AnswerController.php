@@ -4,16 +4,18 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Requests\QuestionStoreRequest;
 use App\Models\Answer;
+use App\Models\Company;
 use App\Models\Option;
 use App\Models\Question;
 use App\Models\Vendor;
+use App\Models\VendorSubmittion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
     // Step 3: Save the answer and move to the next question
-    public function saveAnswer(Request $request, Vendor $vendor, Question $question)
+    public function saveAnswer(Request $request,Company $company, Vendor $vendor, Question $question)
     {
         // return $question;
         $score = 0; // Default score
@@ -65,10 +67,50 @@ class AnswerController extends Controller
             ->first();
 
         if ($nextQuestion) {
-            return redirect()->route('customer.question.show', ['vendor' => $vendor, 'question' => $nextQuestion->id]);
+            return redirect()->route('customer.question.show', ['vendor' => $vendor, 'question' => $nextQuestion->id,
+            'company' => $company->id,
+        ]);
         }
 
+        $questions = $vendor->questions;
+        $totalWeight = 0;
+        $totalScore = 0;
+    
+
+        $user = Auth::user();
+
+        foreach ($questions as $question) {
+            $answer = $question->userAnswer(Auth::id());
+    
+            if ($answer) {
+                $totalScore += $answer->score; 
+            }
+    
+            if ($question->type == 'multiple_choice') {
+                $q_opts = $question->options;
+                foreach ($q_opts as $q_opt) {
+                    $totalWeight += $q_opt->weight;
+                }
+            } else {
+                $totalWeight += $question->weight;
+            }
+        }
+    
+        $totalScorePer = ($totalWeight > 0) ? ($totalScore / $totalWeight) * 100 : 0;
+
+        // $companyId = Auth::user()->userCompany->pluck('company_id')->first();
+        $companyId = $company->id;
+
+        $vendor_submittion =  VendorSubmittion::create([
+            'user_id' => Auth::id(),
+            'vendor_id' => $vendor->id,
+            'percentage' => $totalScorePer,
+            'company_id' => $companyId,
+            'submitted' => true,
+        ]);
+
         // If no more questions, redirect to a summary or finish page
-        return redirect()->route('customer.survey.finish', $vendor->id);
+        return redirect()->route('customer.survey.finish', ['vendor' => $vendor->id, 'company' => $company->id ,'vendor_submittion' => $vendor_submittion->id ]);
+        // return redirect()->route('customer.survey.finish', ['vendor' => $vendor->id, 'company' => $company->id ]);
     }
 }

@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             VendorSeeder::class,
             QuestionSeeder::class,
             OptionSeeder::class,
+            PackageSeeder::class,
         ]);
     }
 }

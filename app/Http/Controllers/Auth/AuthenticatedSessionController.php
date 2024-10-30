@@ -25,36 +25,28 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
-
         $request->session()->regenerate();
-
-        $user_type = Auth::user()->type;
-
-        // Check the user type and redirect accordingly
-        if ($user_type === 'admin') {
-
-            notyf()->success('Welcome To Admin Dashboard');
-
-            return redirect()->route('admin.dashboard');  // Redirect to admin dashboard
-
-        } elseif ($user_type === 'user') {
-
-            notyf()->success('Welcome To Admin Dashboard');
-
-            return redirect()->route('user.dashboard');  // Redirect to instructor dashboard
-        } elseif ($user_type === 'customer') {
-
-            // return 'vdfvds';
-            notyf()->success('Welcome To Customer Dashboard');
-
-            return redirect()->route('customer.dashboard');  // Redirect to instructor dashboard
-        }else {
-
-            return redirect()->route('home');  // Redirect to a default route if no match
+        
+        $user = Auth::user();
+    
+        switch ($user->type) {
+            case 'admin':
+                notyf()->success('Welcome To Admin Dashboard');
+                return redirect()->route('admin.dashboard');
+    
+            case 'user':
+                notyf()->success('Welcome To User Dashboard');
+                return redirect()->route('user.dashboard');
+    
+            case 'customer':
+                notyf()->success('Welcome To Customer Dashboard');
+                return redirect()->route('customer.dashboard');
+    
+            default:
+                return back();  
         }
-        // $this->redirectToDashboard();
-        // return redirect()->intended(route('dashboard', absolute: false));
     }
+    
 
 
     public function redirectToDashboard(): RedirectResponse

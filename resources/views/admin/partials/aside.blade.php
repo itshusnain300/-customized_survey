@@ -11,7 +11,7 @@
       <li class="nav-item">
         <a class="nav-link " href="{{ route('admin.vendor.index') }}">
           <i class="bi bi-grid"></i>
-          <span>Vendors</span>
+          <span>Manage Questionnaire</span>
         </a>
       </li>
 
@@ -26,6 +26,13 @@
         <a class="nav-link " href="{{ route('admin.user.index') }}">
           <i class="bi bi-grid"></i>
           <span>Manage Users</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="{{ route('admin.company.index') }}">
+          <i class="bi bi-grid"></i>
+          <span>Manage Vendors</span>
         </a>
       </li>
 

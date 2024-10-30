@@ -44,7 +44,7 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Surveyor</h1>
+        <h1 class="sitename">Cyco.io</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -94,8 +94,8 @@
             <h1>Build Your Landing Page With <span>Bootslander</span></h1>
             <p>We are team of talented designers making websites with Bootstrap</p>
             <div class="d-flex">
-              <a href="#about" class="btn-get-started">Get Started</a>
-              <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+              <a href="#pricing" class="btn-get-started">Get Started</a>
+              {{-- <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
             </div>
           </div>
 
@@ -176,7 +176,7 @@
     </section><!-- /About Section -->
 
     <!-- Features Section -->
-    <section id="features" class="features section">
+    {{-- <section id="features" class="features section">
 
       <div class="container">
 
@@ -315,7 +315,7 @@
 
       </div>
 
-    </section><!-- /Stats Section -->
+    </section><!-- /Stats Section --> --}}
 
     <!-- Details Section -->
     <section id="details" class="details section">
@@ -402,7 +402,7 @@
     </section><!-- /Details Section -->
 
     <!-- Gallery Section -->
-    <section id="gallery" class="gallery section">
+    {{-- <section id="gallery" class="gallery section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -482,10 +482,10 @@
 
       </div>
 
-    </section><!-- /Gallery Section -->
+    </section><!-- /Gallery Section --> --}}
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section dark-background">
+    {{-- <section id="testimonials" class="testimonials section dark-background">
 
       <img src="assets/img/testimonials-bg.jpg" class="testimonials-bg" alt="">
 
@@ -595,10 +595,10 @@
 
       </div>
 
-    </section><!-- /Testimonials Section -->
+    </section><!-- /Testimonials Section --> --}}
 
     <!-- Team Section -->
-    <section id="team" class="team section">
+    {{-- <section id="team" class="team section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -662,7 +662,7 @@
 
       </div>
 
-    </section><!-- /Team Section -->
+    </section><!-- /Team Section --> --}}
 
     <!-- Pricing Section -->
     <section id="pricing" class="pricing section">
@@ -677,26 +677,24 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="pricing-item">
-              <h3>Free Plan</h3>
-              <p class="description">Ullam mollitia quasi nobis soluta in voluptatum et sint palora dex strater</p>
-              <h4><sup>$</sup>0<span> / month</span></h4>
-              <a href="#" class="cta-btn">Start a free trial</a>
-              <p class="text-center small">No credit card required</p>
-              <ul>
-                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Voluptate id voluptas qui sed aperiam rerum</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Iure nihil dolores recusandae odit voluptatibus</span></li>
-              </ul>
+          @foreach ($packages as $package)
+            <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+              <div class="pricing-item">
+                <h3>{{ $package->name }}</h3>
+                <p class="description">Ullam mollitia quasi nobis soluta in voluptatum et sint palora dex strater</p>
+                <h4><sup>$</sup>16<span> / month</span></h4>
+                <a href="{{ route('package.payment', $package->id)  }}" class="cta-btn">Choose Package</a>
+                <p class="text-center small">No credit card required</p>
+                <ul>
+                  <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
+                  <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
+                </ul>
+              </div>
             </div>
-          </div><!-- End Pricing Item -->
+            
+          @endforeach
 
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+          {{-- <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="pricing-item featured">
               <p class="popular">Popular</p>
               <h3>Business Plan</h3>
@@ -714,27 +712,7 @@
                 <li class="na"><i class="bi bi-x"></i> <span>Iure nihil dolores recusandae odit voluptatibus</span></li>
               </ul>
             </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="pricing-item">
-              <h3>Developer Plan</h3>
-              <p class="description">Ullam mollitia quasi nobis soluta in voluptatum et sint palora dex strater</p>
-              <h4><sup>$</sup>49<span> / month</span></h4>
-              <a href="#" class="cta-btn">Start a free trial</a>
-              <p class="text-center small">No credit card required</p>
-              <ul>
-                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                <li><i class="bi bi-check"></i> <span>Voluptate id voluptas qui sed aperiam rerum</span></li>
-                <li><i class="bi bi-check"></i> <span>Iure nihil dolores recusandae odit voluptatibus</span></li>
-              </ul>
-            </div>
-          </div><!-- End Pricing Item -->
-
+          </div> --}}
         </div>
 
       </div>
@@ -944,7 +922,7 @@
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        {{-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> --}}
       </div>
     </div>
 

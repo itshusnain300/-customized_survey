@@ -9,7 +9,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link " href="{{ route('customer.vendor.index') }}">
+        <a class="nav-link " href="{{ route('customer.companies') }}">
           <i class="bi bi-grid"></i>
           <span>Vendors</span>
         </a>

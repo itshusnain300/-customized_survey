@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 // use App\Http\Controllers\Admin\Controller;
 
 use App\Http\Requests\UserStoreRequest;
+use App\Models\Company;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -62,7 +64,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.user.update', compact('user'));
+        $companies = Company::latest()->get();
+        return view('admin.user.update', compact('user', 'companies'));
     }
 
     /**
@@ -96,6 +99,23 @@ class UserController extends Controller
             $user->delete();
             notyf()->success('user successfully deleted.');
             return back();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+        
+    }
+
+    public function active(Request $request, User $user)
+    {
+        // return $request;
+        try {
+            $user->update([
+                'active' => $request->has('active') ? 1 : 0,
+            ]);
+
+            flash()->success('User successfully updated.');
+            return back();
+
         } catch (\Throwable $th) {
             throw $th;
         }

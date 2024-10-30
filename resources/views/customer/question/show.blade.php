@@ -32,7 +32,7 @@
                             
 
                             <form method="POST"
-                                action="{{ route('customer.question.saveAnswer', ['vendor' => $vendor->id, 'question' => $question->id]) }}"
+                                action="{{ route('customer.question.saveAnswer', ['vendor' => $vendor->id, 'question' => $question->id, 'company' => $company->id]) }}"
                                 id="questionForm">
                                 @csrf
                                 <input type="hidden" name="answer" id="selectedAnswer">
@@ -58,7 +58,7 @@
                                         <div class="btn-group-vertical" role="group"
                                             aria-label="Basic checkbox toggle button group">
                                             @foreach ($question->options as $option)
-                                                <input value="{{ $option->title }}" type="checkbox"
+                                                <input value="{{ $option->title }}" type="radio"
                                                     class="btn-check checkbox-option" id="btncheck{{ $option->id }}"
                                                     autocomplete="off">
                                                 <label class="btn btn-outline-primary"

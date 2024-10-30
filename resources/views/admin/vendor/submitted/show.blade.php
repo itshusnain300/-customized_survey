@@ -78,6 +78,16 @@
                 Total Score: {{ number_format($totalScorePer, 2) }}% [{{ $totalWeight }}]
             </h2>
 
+            <h5 class="text-end mb-4">
+                @if($average)
+                {{-- @if($user->teamUser($user) && $user->teamUser($user)->submittedVendors->isNotEmpty()) --}}
+                    Average: {{ $average }}%
+                @else
+                    Notes: No submissions from your team user yet.
+                @endif
+            </h5>
+            
+
             <!-- List of Questions and Answers -->
             @foreach ($questions as $question)
                 <div class="answer-box p-4 shadow-sm">

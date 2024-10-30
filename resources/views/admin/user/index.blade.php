@@ -33,8 +33,10 @@
                                 <thead>
                                     <tr>
                                         <th><b>N</b>ame</th>
-                                        <th>Emial</th>
+                                        <th>Email</th>
                                         <th>Type</th>
+                                        <th>Active</th>
+                                        <th>Company</th>
                                         <th>Created At</th>
                                         <th>Action</th>
                                     </tr>
@@ -45,6 +47,28 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->type }}</td>
+
+                                            <td style="text-align: center;">
+                                                <div class=" form-check form-switch d-flex justify-content-center">
+
+                                                    <form id="student-active-form{{ $user->id }}" method="POST"
+                                                        action="{{ route('admin.user.active.update', $user->id) }}">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input name="active" class="form-check-input" type="checkbox"
+                                                            role="switch" onchange="activeStudent({{ $user->id }})"
+                                                            {{ $user->active == 1 ? 'checked' : '' }}>
+                                                    </form>
+
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <span class="badge {{ $user->userCompany && $user->userCompany->company ? 'bg-primary' : 'bg-warning' }}">
+                                                    {{ $user->userCompany && $user->userCompany->company ? $user->userCompany->company->name : 'No Associated Company' }}
+                                                </span>
+                                            </td>
+                                            
                                             <td>{{ $user->created_at }}</td>
                                             <td>
                                                 <div class="btn-group">
@@ -61,7 +85,8 @@
 
                                                         @if ($user->hasSubmission($user->id))
                                                             <a class="dropdown-item"
-                                                                href="{{ route('admin.user.submitted_vendors', $user->id) }}">Submitted Vendors</a>
+                                                                href="{{ route('admin.user.submitted_vendors', $user->id) }}">Submitted
+                                                                Vendors</a>
                                                             <div class="dropdown-divider"></div>
                                                         @endif
                                                         <button type="button" class="dropdown-item btn btn-danger block"
@@ -96,7 +121,7 @@
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <button type="submit" class="btn btn-danger">Delete
-                                                                             User
+                                                                            User
                                                                         </button>
                                                                     </form>
                                                                 </div>
@@ -130,13 +155,11 @@
 @endsection
 
 
-{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('.form-check-input').on('change', function() {
-        var userId = $(this).attr('id').replace('userSwitch', '');
-
-        $('#userApproveForm' + userId).submit();
-    });
-});
-</script> --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@section('script')
+    <script>
+        function activeStudent(studentId) {
+            $('#student-active-form' + studentId).submit();
+        };
+    </script>
+@endsection

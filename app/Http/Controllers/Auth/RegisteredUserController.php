@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\CustomerPackage;
+use App\Models\Package;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -17,9 +19,9 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create(Package $package): View
     {
-        return view('auth.register');
+        return view('auth.register', compact('package'));
     }
 
     /**
@@ -33,7 +35,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'type' => ['required, in:admin,user'],
+            'type' => ['required'],
         ]);
 
         $user = User::create([
@@ -42,6 +44,13 @@ class RegisteredUserController extends Controller
             'type' => $request->type,
             'password' => Hash::make($request->password),
         ]);
+
+        CustomerPackage::create([
+            'customer_id' => $user->id,
+            'package_id' => $request->packageId,
+        ]);
+
+        
 
         event(new Registered($user));
 

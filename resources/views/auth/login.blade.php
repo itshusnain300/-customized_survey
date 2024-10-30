@@ -29,8 +29,8 @@
                 <input name="password" type="password" placeholder="Password" />
                 <input name="password_confirmation" type="password" placeholder="Confirm Password" />
 
-                 {{-- --####### // Hidden Inout // ####### --*/ --}}
-                <input name="type" type="hidden" value="user"/>
+                {{-- --####### // Hidden Inout // ####### --*/ --}}
+                <input name="type" type="hidden" value="customer" />
                 <button>Sign Up</button>
             </form>
         </div>
@@ -46,14 +46,16 @@
                 <span>or use your account</span>
 
                 @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
+                    <div class="alert alert-danger mt-4">
+                        <strong>Please fix the following errors:</strong>
+                        <ul class="mb-0">
                             @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
+                                <li class="text-error">{{ $error }}</li>
                             @endforeach
                         </ul>
                     </div>
                 @endif
+
 
                 <input name="email" type="email" placeholder="Email" />
                 <input name="password" type="password" placeholder="Password" />
@@ -78,7 +80,7 @@
     </div>
 
     <div class="footer">
-        <b> Follow me on </b>
+        <b> Survey Management</b>
         <div class="icons">
             <a href="https://github.com/kvaibhav01" target="_blank" class="social"><i class="fab fa-github"></i></a>
             <a href="https://www.instagram.com/vaibhavkhulbe143/" target="_blank" class="social"><i

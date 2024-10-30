@@ -22,6 +22,9 @@
                             <div class="card py-5">
                                 <div class="card-body text-center">
                                     <h5 class="card-title">{{ $vendor->title }}</h5>
+                                    <span class="badge badge-primary p-2">
+                                        {{ $vendor->company ?? 'N/A' }}
+                                    </span> 
                                     <p>{!! $vendor->description !!}</p>
                                     <a href="{{ route('user.question.show', $vendor->id) }}" class="btn btn-primary"
                                         onclick="toggleQuestions('vendor1Questions')">Show Questions</a>

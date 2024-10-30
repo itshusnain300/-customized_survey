@@ -22,9 +22,24 @@
                             <div class="card py-5">
                                 <div class="card-body text-center">
                                     <h5 class="card-title">{{ $vendor->title }}</h5>
+                                    <span class="badge badge-primary p-2">
+                                        {{ $submittedVendor->company->name ?? 'N/A' }}
+                                    </span>
                                     <p>{!! $vendor->description !!}</p>
-                                    <a href="{{ route('customer.question.show', $vendor->id) }}" class="btn btn-primary"
-                                        onclick="toggleQuestions('vendor1Questions')">Show Questions</a>
+
+
+{{-- <div>{{ $user->id }}</div>
+<div>{{ $vendor->id }}</div> --}}
+
+                                    @if ($packageType == 'basic')
+                                        <a href="{{ route('customer.user.submitted_vendor.show', ['user' => $user->id, 'vendor_submittion' => $vendor_submittion->id]) }}"
+                                            class="btn btn-primary">Show
+                                            Report</a>
+                                    @else
+                                        <a href="{{ route('customer.question.show', ['company' => $company->id, 'vendor' => $vendor->id]) }}"
+                                            class="btn btn-primary">Show
+                                            Questions</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

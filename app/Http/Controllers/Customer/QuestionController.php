@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Requests\QuestionStoreRequest;
 use App\Models\Answer;
+use App\Models\Company;
 use App\Models\Option;
 use App\Models\Question;
+use App\Models\User;
 use App\Models\Vendor;
 use App\Models\VendorSubmittion;
 use Illuminate\Http\Request;
@@ -20,16 +22,12 @@ class QuestionController extends Controller
         return view('customer.question.index', compact('questions'));
     }
 
-    public function show(Vendor $vendor, Question $question = null)
+    public function show(Company $company, Vendor $vendor, Question $question = null)
     {
-        // return $question;
-        // Retrieve the selected vendor
-        // $vendor = Vendor::findOrFail($vendorId);
-
+        // return $vendor;
         if (!$question) {
             $question = $vendor->questions->first();
         }
-        // return $question;
 
         if ($vendor->questions && count($vendor->questions) > 0) {
             $questions = $vendor->questions->sortBy('id'); // Sort the questions by 'id'
@@ -43,20 +41,47 @@ class QuestionController extends Controller
         // Retrieve next and previous questions for navigation
         
             // return $nextQuestion;
-        return view('customer.question.show', compact('vendor', 'question', 'nextQuestion', 'previousQuestion'));
+        return view('customer.question.show', compact('vendor', 'question', 'nextQuestion', 'previousQuestion',
+        'company',
+    ));
     }
 
 
     // Step 4: Finish the survey
-    public function finish(Vendor $vendor)
+    public function finish(Company $company, Vendor $vendor, VendorSubmittion $vendor_submittion)
     {
-        VendorSubmittion::create([
-            'user_id' => Auth::id(),
-            'vendor_id' => $vendor->id,
-            'submitted' => true,
-        ]);
+       
+        $user = Auth::user();
+        $average = $this->calculateAverageVendorPercentage($user);
+        
+        $submitted_vendor = $vendor_submittion->vendor;
+
+        // $average = $this->calculateAverageVendorPercentage($user);
 
         notyf()->success('Your Survey Submitted Successfully');
-        return view('customer.question.finish', compact('vendor'));
+        return view('customer.company.submitted.show', compact('user', 'submitted_vendor', 'vendor_submittion', 'average'));
+        // return view('customer.question.finish', compact('vendor', 'company',));
     }
-}
+
+    public function calculateAverageVendorPercentage(User $user)
+    {
+        // Get the submitted vendors for the current user
+        $userSubmittedVendors = $user->submittedVendors;
+        $userPercentages = $userSubmittedVendors->pluck('percentage')->filter(); // Get non-null percentages
+
+        $teamUsers = User::where('company', $user->company)
+            ->where('id', '!=', $user->id) 
+            ->get();
+
+        // Get percentages from team users' submitted vendors
+       $teamPercentages = $teamUsers->flatMap(function ($teamUser) {
+            return $teamUser->submittedVendors->pluck('percentage')->filter(); // Get non-null percentages
+        });
+
+        // Calculate total percentages and count for average
+        $totalPercentages = $userPercentages->merge($teamPercentages);
+        $average = $totalPercentages->isNotEmpty() ? $totalPercentages->average() : 0; // Calculate average
+
+        return number_format($average, 2, '.', '');// Return the average percentage
+    }
+}   

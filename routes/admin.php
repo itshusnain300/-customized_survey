@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\SubmittedVendorController;
+use App\Http\Controllers\Admin\UserCompanyController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VendorController;
 use App\Http\Controllers\ProfileController;
@@ -18,25 +20,27 @@ Route::prefix('admin')
 
         Route::resource('vendor', VendorController::class);
         Route::resource('question', QuestionController::class);
+
+        // USer Route //
+        Route::put('user/{user}/active', [UserController::class, 'active'])->name('user.active.update');
         Route::resource('user', UserController::class);
 
         // Submitted Vendors //
     Route::get('user/{user}/submitted-vendors', [SubmittedVendorController::class, 'index'])->name('user.submitted_vendors');
     Route::get('user/{user}/submitted-vendor/{vendor_submittion}', [SubmittedVendorController::class, 'show'])->name('user.submitted_vendor.show');
+    
     Route::get('user/{user}/submitted-vendor/diagram/{vendor_submittion}', [SubmittedVendorController::class, 'showDiagram'])->name('user.submitted_vendor.show_diagram');
     
-    Route::get('/graph/data', function () {
-        return response()->json([
-            "name" => "Customer Specific", "size" => 500000, "link" => "http://google.com",
-            "children" => [
-                ["name" => "Business Threats", "size" => 300000, "link" => "http://google.com"],
-                ["name" => "Privacy and Compliance", "size" => 300000, "link" => "http://yahoo.com"],
-                ["name" => "Operational Security ", "size" => 300000, "link" => "http://youtube.com"],
-                ["name" => "Resiliency", "size" => 300000, "link" => "http://twitter.com"],
-                ["name" => "Supply Chain", "size" => 300000, "link" => "http://facebook.com"],
-                ["name" => "Data Protection ", "size" => 300000, "link" => "http://facebook.com"]
-            ]
-        ]);
-    })->name('graph.data');
+
+    // Company Routes
+    Route::resource('company', CompanyController::class);
+
+    // User Company Routes
+    Route::post('user-company', [UserCompanyController::class, 'update'])->name('user.assign.company');
+
+    // Route::get('user/{user}/vendor_submittion/{vendor_submittion}/graph/data', [SubmittedVendorController::class, 'calculateDiagram'])->name('graph.data');
+    // web.php
+    Route::get('/admin/graph/data/user/{user}/vendor_submittion/{vendor_submittion}', [SubmittedVendorController::class, 'calculateDiagram'])->name('graph.data');
+
     // Route::get('submitted-vendor/{vendor_submittion}');
 });

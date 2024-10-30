@@ -72,12 +72,20 @@
                             </div>
                         @elseif ($question->type === 'multiple_choice')
                             <div class="d-flex justify-content-center align-items-center">
-                                <div class="btn-group-vertical" role="group" aria-label="Basic checkbox toggle button group">
+
+                                <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
                                     @foreach ($question->options as $option)
-                                        <input value="{{ $option->title }}" type="checkbox" class="btn-check checkbox-option" id="btncheck{{ $option->id }}" autocomplete="off">
-                                        <label class="btn btn-outline-primary" for="btncheck{{ $option->id }}">{{ $option->title }}</label>
+                                        <input 
+                                            type="radio" 
+                                            class="btn-check checkbox-option" 
+                                            name="question_option" 
+                                            value="{{ $option->title }}" 
+                                            id="btnradio{{ $option->id }}" 
+                                            autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio{{ $option->id }}">{{ $option->title }}</label>
                                     @endforeach
                                 </div>
+                                
                             </div>
                             
                         @elseif ($question->type === 'valid/invalid')

@@ -19,12 +19,12 @@
                     <div class="card">
                         <div class="card-body" style="overflow-x: scroll;">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="card-title">Vendors Data</h5>
+                                <h5 class="card-title">Questionnaire Data</h5>
 
                                 <a href="{{ route('admin.vendor.create') }}">
                                     <button class="btn btn-primary btn-lg">
                                         <i class="bi bi-plus-circle-fill mr-1"></i>
-                                        Create New Vendor
+                                        Create New Questionnaire
                                     </button>
                                 </a>
 

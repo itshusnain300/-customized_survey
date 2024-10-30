@@ -13,7 +13,7 @@
 
         <section>
             <div class="container">
-                <h5 class="card-title">Create New Vendor</h5>
+                <h5 class="card-title">Create New Questionnaire</h5>
                 <form method="POST" action="{{ route('admin.vendor.store') }}" 
                     class="d-flex flex-column flex-grow-1 justify-content-between">
                     @csrf

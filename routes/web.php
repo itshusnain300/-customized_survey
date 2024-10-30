@@ -1,18 +1,21 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubmittedVendorController;
 use App\Http\Controllers\User\AnswerController;
 use App\Http\Controllers\User\QuestionController;
 use App\Http\Controllers\User\VendorController;
+use App\Models\Package;
 use App\Models\Question;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    $packages = Package::all();
+    return view('index', compact('packages'));
 });
-Route::get('/payment', function () {
-    return view('payment');
-});
+Route::get('package/{package}/payment', function (Package $package) {
+    return view('payment', compact('package'));
+})->name('package.payment');
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
@@ -35,7 +38,11 @@ Route::prefix('user')
         Route::post('/survey/vendor/{vendor}/question/{question?}', [AnswerController::class, 'saveAnswer'])->name('question.saveAnswer');
 
         Route::get('/survey/{vendor}/finish', [QuestionController::class, 'finish'])->name('survey.finish');
+
+        Route::get('user/{user}/submitted-vendor/{vendor_submittion}', [SubmittedVendorController::class, 'show'])->name('user.submitted_vendor.show');
     });
+    Route::get('submitted-vendors', [SubmittedVendorController::class, 'index'])->name('submitted_vendors');
+    Route::get('user/submitted-vendor/{vendor_submittion}', [SubmittedVendorController::class, 'show'])->name('submitted_vendor.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

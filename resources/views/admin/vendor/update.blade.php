@@ -14,7 +14,7 @@
 
     <section>
         <div class="container">
-            <h5 class="card-title">Update Vendor</h5>
+            <h5 class="card-title">Update Questionnaire</h5>
             <form method="POST" action="{{ route('admin.vendor.update', $vendor->id) }}" 
                   class="d-flex flex-column flex-grow-1 justify-content-between">
                 @csrf

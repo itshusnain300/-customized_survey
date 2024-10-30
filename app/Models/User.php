@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -22,6 +24,8 @@ class User extends Authenticatable
         'email',
         'password',
         'type',
+        'active',
+        'company',
     ];
 
     /**
@@ -56,4 +60,22 @@ class User extends Authenticatable
     {
         return VendorSubmittion::where('user_id', $userId)->exists();
     }
+
+    public function userCompany(): HasOne
+    {
+        return $this->hasOne(UserCompany::class);
+    }
+
+    public function teamUser($user)
+    {
+        return User::where('company', $user->company)
+            ->where('id', '!=', $user->id)
+            ->first();
+    }
+
+    public function customerPackage(): HasOne
+    {
+        return $this->hasOne(CustomerPackage::class, 'customer_id');
+    }
+    
 }

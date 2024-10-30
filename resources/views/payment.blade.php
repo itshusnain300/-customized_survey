@@ -319,7 +319,7 @@
                 </div>
             </div>
             <div class="col-12">
-                <a href="{{ route('user.dashboard') }}" class="btn btn-primary payment">
+                <a href="{{ route('registerForm', $package->id) }}" class="btn btn-primary payment">
                     Make Payment
                 </a>
             </div>

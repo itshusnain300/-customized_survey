@@ -50,9 +50,38 @@ class QuestionController extends Controller
     // Step 4: Finish the survey
     public function finish(Vendor $vendor)
     {
+
+        $questions = $vendor->questions;
+        $totalWeight = 0;
+        $totalScore = 0;
+    
+        foreach ($questions as $question) {
+            $answer = $question->userAnswer(Auth::id());
+    
+            if ($answer) {
+                $totalScore += $answer->score; 
+            }
+    
+            if ($question->type == 'multiple_choice') {
+                $q_opts = $question->options;
+                foreach ($q_opts as $q_opt) {
+                    $totalWeight += $q_opt->weight;
+                }
+            } else {
+                $totalWeight += $question->weight;
+            }
+        }
+    
+        $totalScorePer = ($totalWeight > 0) ? ($totalScore / $totalWeight) * 100 : 0;
+
+        // return $
+        $companyId = Auth::user()->userCompany->pluck('company_id')->first();
+
         VendorSubmittion::create([
             'user_id' => Auth::id(),
             'vendor_id' => $vendor->id,
+            'percentage' => $totalScorePer,
+            'company_id' => $companyId,
             'submitted' => true,
         ]);
 

@@ -63,4 +63,9 @@ class Vendor extends Model
             ->latest()
             ->get();
     }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }
