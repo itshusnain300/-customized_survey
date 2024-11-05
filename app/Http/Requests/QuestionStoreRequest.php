@@ -24,12 +24,12 @@ class QuestionStoreRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'type' => 'required|in:multiple_choice,yes_no,file,valid/invalid,text', 
-            'description' => 'required|string', 
+            // 'description' => 'required|string', 
             'category' => 'required|string', 
-            'weight' => 'nullable|in:1,2,3,4', 
+            'weight' => 'nullable|in:0,1,2,3,4', 
             'vendor_id' => 'required|exists:vendors,id',
             'options.*.text' => 'nullable|string|max:255', // Validate the option text
-            'options.*.weight' => 'nullable|integer', 
+            'options.*.weight' => 'nullable|in:0,1,2,3,4', 
         ];
     }
     

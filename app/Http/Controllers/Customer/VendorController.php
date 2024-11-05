@@ -18,52 +18,37 @@ class VendorController extends Controller
         return view('customer.company.index', compact('companies'));
     }
     public function show(Company $company)
-    {
-        $packageType = Auth::user()->customerPackage->package->type;
-        $vendors = [];
+{
+    $packageType = Auth::user()->customerPackage->package->type ?? 'Default Type';
+    $vendors = [];
 
-        if ($packageType == 'basic') {
-                $vendors = $company->companySets->map->vendor
-                ->filter(function ($vendor) {
-                    return in_array($vendor->type, ['basic_set', 'advanced_set']);
-                })
-                ->values();
-            
-                $user = $vendors->first(function ($vendor) {
-                    // Check if the vendor has any submissions
-                    return $vendor->vendorSubmissions->isNotEmpty();
-                })->vendorSubmissions->first()->user ?? null; 
-        }else{
-            $vendors = $company->companySets->map->vendor
+    if ($packageType == 'basic') {
+        $vendors = $company->companySets->map->vendor
+            ->filter(function ($vendor) {
+                return in_array($vendor->type, ['basic_set', 'advanced_set']);
+            })
+            ->values();
+    } else {
+        $vendors = $company->companySets->map->vendor
             ->filter(function ($vendor) {
                 return $vendor->type === 'customer_specific';
             })
             ->values();
-        }
-
-           
-        $user = $vendors->first(function ($vendor) {
-            // Check if the vendor has any submissions
-            return $vendor->vendorSubmissions->isNotEmpty();
-        })->vendorSubmissions->first()->user ?? null; 
-
-
-        // return $vendors->map(function ($vendor) {
-        //     if ($vendor->vendorSubmissions->isNotEmpty()) {
-        //         // Return the user from the first vendor submission
-        //         return $vendor->vendorSubmissions->first()->user;
-        //     }
-        //     return null;
-        // });
-        $vendor_submittion = $vendors->first(function ($vendor) {
-            // Check if the vendor has any submissions
-            return $vendor->vendorSubmissions->isNotEmpty();
-        })->vendorSubmissions->first() ?? null; 
-        
-
-        return view('customer.vendor.index', compact('vendors', 'company', 'packageType', 'user', 'vendor_submittion'));
     }
 
+    // Get the first vendor with submissions
+    $vendorWithSubmissions = $vendors->first(function ($vendor) {
+        return isset($vendor->vendorSubmissions) && $vendor->vendorSubmissions->isNotEmpty();
+    });
+
+    // Safely access user if vendorWithSubmissions is found
+    $user = $vendorWithSubmissions ? $vendorWithSubmissions->vendorSubmissions->first()->user : null;
+    
+    // Safely access the first vendor submission
+    $vendor_submission = $vendorWithSubmissions ? $vendorWithSubmissions->vendorSubmissions->first() : null;
+
+    return view('customer.vendor.index', compact('vendors', 'company', 'packageType', 'user', 'vendor_submission'));
+}
     public function index()
     {
         // Retrieve vendors that do not have any submissions
