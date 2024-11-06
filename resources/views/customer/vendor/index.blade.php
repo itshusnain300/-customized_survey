@@ -32,7 +32,7 @@
 <div>{{ $vendor->id }}</div> --}}
 
                                     @if ($packageType == 'basic')
-                                        <a href="{{ route('customer.user.submitted_vendor.show', ['user' => $user->id, 'vendor_submittion' => $vendor_submittion->id]) }}"
+                                        <a href="{{ route('customer.user.submitted_vendor.show', ['user' => $user->id, 'vendor_submittion' => $vendor_submission->id]) }}"
                                             class="btn btn-primary">Show
                                             Report</a>
                                     @else
