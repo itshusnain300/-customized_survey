@@ -20,7 +20,6 @@ class SubmittedVendorController extends Controller
 
     public function show(User $user, VendorSubmittion $vendor_submittion)
     {
-        // @dd($user);
         // $this->calculateAverageVendorPercentage($user);
         // return $user->teamUser($user);
 

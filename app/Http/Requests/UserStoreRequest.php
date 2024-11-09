@@ -28,6 +28,8 @@ class UserStoreRequest extends FormRequest
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'type' => ['required'],
+              // New rule for company_id
+              'company_id' => ['nullable', 'exists:companies,id'],
         ];
     }
 }

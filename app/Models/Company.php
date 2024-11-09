@@ -47,4 +47,10 @@ class Company extends Model
     {
         return $this->hasMany(CompanySets::class);
     }
+     
+    public function user()
+    {
+        return $this->HasOne(User::class);
+    }
+    
 }

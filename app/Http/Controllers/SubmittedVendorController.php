@@ -32,6 +32,7 @@ class SubmittedVendorController extends Controller
         // $average = $this->calculateAverageVendorPercentage($user);
         $submitted_vendor = $vendor_submittion->vendor;
         $userId = $vendor_submittion->user_id;
+        // dd('usercheck');
         // return $user->submittedVendors->map->vendor;
         return view('vendor.submitted.show', compact('user', 'submitted_vendor', 'userId')); // Pass both variables correctly
     }

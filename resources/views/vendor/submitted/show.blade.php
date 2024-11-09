@@ -102,7 +102,7 @@
             </div>
 
             <!-- Header -->
-            <h2 class="text-center mb-4">User Submitted Questions & Answers</h2>
+            <h2 class="text-center mb-4">User Submitted Questions & Answers,.,..,,.</h2>
 
             <h2 class="text-end mb-4">
                 Total Score: {{ number_format($totalScorePer, 2) }}% [{{ $totalWeight }}]

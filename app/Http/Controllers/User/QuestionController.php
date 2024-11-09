@@ -75,7 +75,10 @@ class QuestionController extends Controller
         $totalScorePer = ($totalWeight > 0) ? ($totalScore / $totalWeight) * 100 : 0;
 
         // return $
-        $companyId = Auth::user()->userCompany->pluck('company_id')->first();
+        // $companyId = Auth::user()->userCompany->pluck('company_id')->first();
+        // Retrieve the company_id of the authenticated user
+$companyId = Auth::user()->userCompany ? Auth::user()->userCompany->company_id : null;
+
 
         VendorSubmittion::create([
             'user_id' => Auth::id(),
