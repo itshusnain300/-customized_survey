@@ -40,6 +40,7 @@ class SubmittedVendorController extends Controller
 
         $teamUsers = User::where('company', $user->company)
             ->where('id', '!=', $user->id) 
+            ->where('type', 'user') 
             ->get();
 
         // Get percentages from team users' submitted vendors

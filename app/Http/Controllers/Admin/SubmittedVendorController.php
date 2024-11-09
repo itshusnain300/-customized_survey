@@ -25,20 +25,50 @@ class SubmittedVendorController extends Controller
         // return $user->teamUser($user);
 
         // return $vendor_submittion->vern;
-        $average = $this->calculateAverageVendorPercentage($user);
+        if ($user->type == 'customer') {
+            $average = $this->calculateAverageVendorPercentageCustomer($user);
+        }else{
+            $average = $this->calculateAverageVendorPercentageUser($user);
+        }
         $submitted_vendor = $vendor_submittion->vendor;
         // return $user->submittedVendors->map->vendor;
         return view('admin.vendor.submitted.show', compact('user', 'submitted_vendor', 'average')); // Pass both variables correctly
     }
 
-    public function calculateAverageVendorPercentage(User $user)
+    public function calculateAverageVendorPercentageUser(User $user)
     {
+        // return 'ergve';
         // Get the submitted vendors for the current user
         $userSubmittedVendors = $user->submittedVendors;
         $userPercentages = $userSubmittedVendors->pluck('percentage')->filter(); // Get non-null percentages
 
-        $teamUsers = User::where('company', $user->company)
-            ->where('id', '!=', $user->id) 
+       $teamUsers = User::where('company', $user->company)
+            ->where('id', '!=', $user->id)
+            ->where('type', 'customer')
+            ->get();
+
+        // Get percentages from team users' submitted vendors
+       $teamPercentages = $teamUsers->flatMap(function ($teamUser) {
+            return $teamUser->submittedVendors->pluck('percentage')->filter(); // Get non-null percentages
+        });
+
+        // Calculate total percentages and count for average
+        $totalPercentages = $userPercentages->merge($teamPercentages);
+        $average = $totalPercentages->isNotEmpty() ? $totalPercentages->average() : 0; // Calculate average
+
+        return number_format($average, 2, '.', '');// Return the average percentage
+    }
+
+    public function calculateAverageVendorPercentageCustomer(User $user)
+    {
+        // return 'ergve';
+        // Get the submitted vendors for the current user
+        $userSubmittedVendors = $user->submittedVendors;
+        $userPercentages = $userSubmittedVendors->pluck('percentage')->filter(); // Get non-null percentages
+
+       $teamUsers = User::where('company', $user->company)
+            // ->where('id', '!=', $user->id)   
+            ->where('type', 'user')
             ->get();
 
         // Get percentages from team users' submitted vendors

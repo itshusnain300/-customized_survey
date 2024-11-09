@@ -109,6 +109,9 @@ class AnswerController extends Controller
             'submitted' => true,
         ]);
 
+        $user->company = $company->name;
+        $user->save();
+
         // If no more questions, redirect to a summary or finish page
         return redirect()->route('customer.survey.finish', ['vendor' => $vendor->id, 'company' => $company->id ,'vendor_submittion' => $vendor_submittion->id ]);
         // return redirect()->route('customer.survey.finish', ['vendor' => $vendor->id, 'company' => $company->id ]);
