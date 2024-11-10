@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 // use App\Http\Controllers\Admin\Controller;
 
-use App\Http\Requests\VendorStoreRequest;
 use App\Models\User;
 use App\Models\Vendor;
 use App\Models\VendorSubmittion;
@@ -13,19 +12,19 @@ class SubmittedVendorController extends Controller
 {
     public function index(User $user)
     {
-         $submittedVendors = VendorSubmittion::with('user')
-            ->whereHas('user', function($query) {
+        $submittedVendors = VendorSubmittion::with('user')
+            ->whereHas('user', function ($query) {
                 $query->where('type', 'user');
             })
             ->latest()
             ->get();
-
 
         return view('vendor.index', compact('submittedVendors', ));
     }
 
     public function show(User $user, VendorSubmittion $vendor_submittion)
     {
+        
         // $this->calculateAverageVendorPercentage($user);
         // return $user->teamUser($user);
 
@@ -33,6 +32,7 @@ class SubmittedVendorController extends Controller
         // $average = $this->calculateAverageVendorPercentage($user);
         $submitted_vendor = $vendor_submittion->vendor;
         $userId = $vendor_submittion->user_id;
+        // dd('usercheck');
         // return $user->submittedVendors->map->vendor;
         return view('vendor.submitted.show', compact('user', 'submitted_vendor', 'userId')); // Pass both variables correctly
     }
@@ -44,7 +44,7 @@ class SubmittedVendorController extends Controller
     //     $userPercentages = $userSubmittedVendors->pluck('percentage')->filter(); // Get non-null percentages
 
     //     $teamUsers = User::where('company', $user->company)
-    //         ->where('id', '!=', $user->id) 
+    //         ->where('id', '!=', $user->id)
     //         ->get();
 
     //     // Get percentages from team users' submitted vendors

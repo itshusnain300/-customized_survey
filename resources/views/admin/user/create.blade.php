@@ -55,17 +55,34 @@
     
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="title" class="form-label">Passsword</label>
+                                <label for="title" class="form-label">Password</label>
                                 <input type="password" class="form-control" name="password" id="title"
                                     placeholder="Enter password" value="{{ old('password') }}">
                             </div>
                             <div class="col-md-6">
-                                <label for="title" class="form-label">Passsword Confirmation</label>
+                                <label for="title" class="form-label">Password Confirmation</label>
                                 <input type="password" class="form-control" name="password_confirmation" id="title"
                                     placeholder="Enter password" value="{{ old('password_confirmation') }}">
                             </div>
                         </div>
-    
+
+                        {{-- Company Assignment Section --}}
+                        {{-- <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label for="company_id" class="form-label">Assign Company</label>
+                                <select class="form-select" name="company_id" id="company_id">
+                                    <option value="" selected>Select company for user</option>
+                                    @foreach ($companies as $company)
+                                        <option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>
+                                            {{ $company->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                
+                            </div>
+                        </div>
+                         --}}
+
                         <button type="submit" class="btn btn-primary btn-lg d-inline-block">
                             <i class="bi bi-plus-circle-fill mr-1"></i>
                             Create

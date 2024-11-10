@@ -25,7 +25,8 @@ class User extends Authenticatable
         'password',
         'type',
         'active',
-        'company',
+        'company_name',
+        'company_id',
     ];
 
     /**
@@ -61,21 +62,30 @@ class User extends Authenticatable
         return VendorSubmittion::where('user_id', $userId)->exists();
     }
 
-    public function userCompany(): HasOne
-    {
-        return $this->hasOne(UserCompany::class);
-    }
+    // public function userCompany(): HasOne
+    // {
+    //     return $this->hasOne(UserCompany::class);
+    // }
 
     public function teamUser($user)
     {
-        return User::where('company', $user->company)
-            ->where('id', '!=', $user->id)
+        return User::where('users.company_id', $user->company_id)  // Use company_id from users table
+            ->where('users.id', '!=', $user->id)                    // Exclude the current user
+            ->join('companies', 'companies.id', '=', 'users.company_id')  // Join with companies table on company_id
             ->first();
     }
+    
+    
+    
+    
 
     public function customerPackage(): HasOne
     {
         return $this->hasOne(CustomerPackage::class, 'customer_id');
+    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class,'company_id');
     }
     
 }

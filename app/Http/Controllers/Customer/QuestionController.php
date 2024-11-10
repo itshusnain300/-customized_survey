@@ -62,6 +62,21 @@ class QuestionController extends Controller
         return view('customer.company.submitted.show', compact('user', 'submitted_vendor', 'vendor_submittion', 'average'));
         // return view('customer.question.finish', compact('vendor', 'company',));
     }
+    
+    public function showSubmittedVendor(Vendor $vendor, VendorSubmittion $vendor_submittion)
+    {
+    //    return $vendor_submittion;
+        $user = Auth::user();
+        $average = $this->calculateAverageVendorPercentage($user);
+        
+        $submitted_vendor = $vendor_submittion->vendor;
+
+        // $average = $this->calculateAverageVendorPercentage($user);
+
+        notyf()->success('Your Survey Submitted Successfully');
+        return view('customer.company.submitted.show', compact('user', 'submitted_vendor', 'vendor_submittion', 'average'));
+        // return view('customer.question.finish', compact('vendor', 'company',));
+    }
 
     public function calculateAverageVendorPercentage(User $user)
     {

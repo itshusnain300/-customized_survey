@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('customer.layouts.app')
 @section('main')
     <main id="main" class="main">
         <div class="pagetitle">
@@ -26,13 +26,18 @@
                                         {{ $submittedVendor->company->name ?? 'N/A' }}
                                     </span>
                                     <p>{!! $submittedVendor->vendor->description !!}</p>
-                                    <div class="d-flex justify-between gap-3">
-                                        <a href="{{ route('admin.user.submitted_vendor.show',['user' => 
+                                    <div class="d-flex justify-content-center align-item-center">
+                                        <a href="{{ route('customer.survey.submission.show', ['vendor' => $submittedVendor->vendor->id, 'vendor_submittion' => $submittedVendor->id]) }}" 
+                                            class="btn-sm btn-primary">
+                                            Show Report
+                                         </a>
+                                         
+                                        {{-- <a href="{{ route('admin.user.submitted_vendor.show',['user' => 
                                         $userId, 'vendor_submittion' => $submittedVendor->id] ) }}" class="btn-sm btn-primary"
-                                            onclick="">Show Report</a>
-                                        <a href="{{ route('admin.user.submitted_vendor.show_diagram',['user' => 
+                                            onclick="">Show Report</a> --}}
+                                        {{-- <a href="{{ route('admin.user.submitted_vendor.show_diagram',['user' => 
                                         $userId, 'vendor_submittion' => $submittedVendor->id] ) }}" class="btn-sm btn-primary"
-                                            onclick="">Show Diagram</a>
+                                            onclick="">Show Diagram</a> --}}
                                     </div>
                                 </div>
                             </div>

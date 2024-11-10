@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('type');
             $table->integer('weight')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

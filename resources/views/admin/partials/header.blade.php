@@ -147,7 +147,7 @@
 
               </li><!-- End Messages Nav --> --}}
 
-              <li class="nav-item dropdown pe-3">
+              {{-- <li class="nav-item dropdown pe-3">
 
                   <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                       data-bs-toggle="dropdown">
@@ -203,10 +203,16 @@
                           </form>
                       </li>
 
-                  </ul><!-- End Profile Dropdown Items -->
+                  </ul>
+                  <!-- End Profile Dropdown Items --> --}}
               </li><!-- End Profile Nav -->
 
           </ul>
+          <form method="POST" action="{{ route('logout') }}">
+             @csrf
+             <i class=""></i>
+          <button>Log Out</button>
+      </form>
       </nav>
 
   </header><!-- End Header -->

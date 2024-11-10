@@ -67,7 +67,7 @@ class SubmittedVendorController extends Controller
         $userPercentages = $userSubmittedVendors->pluck('percentage')->filter(); // Get non-null percentages
 
        $teamUsers = User::where('company', $user->company)
-            // ->where('id', '!=', $user->id)   
+            // ->where('id', '!=', $user->id)
             ->where('type', 'user')
             ->get();
 

@@ -96,7 +96,7 @@
             
 
             <!-- List of Questions and Answers -->
-            @foreach ($questions as $question)
+            {{-- @foreach ($questions as $question)
                 <div class="answer-box p-4 shadow-sm">
                     <!-- Question -->
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -146,7 +146,9 @@
                         @elseif($question->type == 'valid_failed')
                             <p>{{ $answer_text == '1' ? 'Valid' : 'Failed' }}</p>
                         @elseif($question->type == 'file')
-                            <a href="{{ asset('storage/uploads/' . $answer_file) }}" target="_blank"
+                            <a 
+                            href="{{ asset('storage/uploads/' . $answer_file) }}"
+                             target="_blank"
                                 class="btn btn-sm btn-primary">
                                 <i class="fas fa-download"></i> Download File
                             </a>
@@ -164,7 +166,7 @@
                         <small>Submitted by {{ $user->name }} on {{ $user->created_at->format('d M Y, h:i A') }}</small>
                     </div>
                 </div>
-            @endforeach
+            @endforeach --}}
         </section>
 
     </main>

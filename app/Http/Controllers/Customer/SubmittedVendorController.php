@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Customer;
 
 // use App\Http\Controllers\Admin\Controller;
 
-use App\Http\Requests\VendorStoreRequest;
 use App\Models\User;
 use App\Models\Vendor;
 use App\Models\VendorSubmittion;
@@ -29,7 +28,7 @@ class SubmittedVendorController extends Controller
         $submitted_vendor = $vendor_submittion->vendor;
         $vendor_submittion = $vendor_submittion;
         // return $user->submittedVendors->map->vendor;
-        return view('customer.company.submitted.show', compact('user', 'submitted_vendor', 'average', 'vendor_submittion')); 
+        return view('customer.company.submitted.show', compact('user', 'submitted_vendor', 'average', 'vendor_submittion'));
     }
 
     public function calculateAverageVendorPercentage(User $user)
@@ -44,7 +43,7 @@ class SubmittedVendorController extends Controller
             ->get();
 
         // Get percentages from team users' submitted vendors
-       $teamPercentages = $teamUsers->flatMap(function ($teamUser) {
+        $teamPercentages = $teamUsers->flatMap(function ($teamUser) {
             return $teamUser->submittedVendors->pluck('percentage')->filter(); // Get non-null percentages
         });
 
@@ -52,7 +51,7 @@ class SubmittedVendorController extends Controller
         $totalPercentages = $userPercentages->merge($teamPercentages);
         $average = $totalPercentages->isNotEmpty() ? $totalPercentages->average() : 0; // Calculate average
 
-        return number_format($average, 2, '.', '');// Return the average percentage
+        return number_format($average, 2, '.', ''); // Return the average percentage
     }
 
     public function showDiagram(User $user, VendorSubmittion $vendor_submittion)
@@ -64,36 +63,36 @@ class SubmittedVendorController extends Controller
         $totalScore = 0;
 
         foreach ($questions as $question) {
-            $answer = $question->userAnswer($user->id); 
-    
+            $answer = $question->userAnswer($user->id);
+
             if ($answer) {
                 $totalScore += $answer->score;
             }
         }
 
         $categories = $vendor_submittion->vendor->questions()
-        ->get() // Fetch all questions
-        ->groupBy('category') // Group by category
-        ->map(function ($questions) use ($user) {
-            $totalScore = $questions->sum(function ($question) use ($user) {
-                return $question->userAnswer($user->id)->score ?? 0; // Sum scores or 0 if not available
-            });
+            ->get() // Fetch all questions
+            ->groupBy('category') // Group by category
+            ->map(function ($questions) use ($user) {
+                $totalScore = $questions->sum(function ($question) use ($user) {
+                    return $question->userAnswer($user->id)->score ?? 0; // Sum scores or 0 if not available
+                });
 
-            // Return the category name with its total score
-            return [
-                'category' => $questions->first()->category, // Get category name
-                'score' => $totalScore // Total score for that category
-            ];
-        })
-        ->values(); 
+                // Return the category name with its total score
+                return [
+                    'category' => $questions->first()->category, // Get category name
+                    'score' => $totalScore, // Total score for that category
+                ];
+            })
+            ->values();
 
         $average = $this->calculateAverageVendorPercentage($user);
-    
+
         response()->json([
             "name" => $vendor_submittion->vendor->title,
             "score" => $totalScore,
             "size" => 500000,
-            "children" => $categories
+            "children" => $categories,
         ]);
 
         return view('customer.vendor.diagram.show', compact('user', 'submitted_vendor', 'vendor_submittion', 'average')); // Pass both variables correctly
@@ -106,38 +105,38 @@ class SubmittedVendorController extends Controller
         $totalScore = 0;
 
         foreach ($questions as $question) {
-            $answer = $question->userAnswer($user->id); 
-    
+            $answer = $question->userAnswer($user->id);
+
             if ($answer) {
                 $totalScore += $answer->score;
             }
         }
         $categories = $vendor_submittion->vendor->questions()
-        ->get() // Fetch all questions
-        ->groupBy('category') // Group by category
-        ->map(function ($questions) use ($user) {
-            $totalScore = $questions->sum(function ($question) use ($user) {
-                return $question->userAnswer($user->id)->score ?? 0; // Sum scores or 0 if not available
-            });
+            ->get() // Fetch all questions
+            ->groupBy('category') // Group by category
+            ->map(function ($questions) use ($user) {
+                $totalScore = $questions->sum(function ($question) use ($user) {
+                    return $question->userAnswer($user->id)->score ?? 0; // Sum scores or 0 if not available
+                });
 
-            // Return the category name with its total score
-            return [
-                'category' => $questions->first()->category, // Get category name
-                "size" => 300000,
-                'score' => $totalScore // Total score for that category
-            ];
-        })
-        ->values(); 
+                // Return the category name with its total score
+                return [
+                    'category' => $questions->first()->category, // Get category name
+                    "size" => 300000,
+                    'score' => $totalScore, // Total score for that category
+                ];
+            })
+            ->values();
 
         $average = $this->calculateAverageVendorPercentage($user);
-    
+
         return response()->json([
             "name" => $vendor_submittion->vendor->title,
             "score" => $totalScore,
             "size" => 500000,
-            "children" => $categories
+            "children" => $categories,
         ]);
 
     }
-    
+
 }

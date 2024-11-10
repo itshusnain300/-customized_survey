@@ -64,8 +64,13 @@
                                             </td>
 
                                             <td>
-                                                <span class="badge {{ $user->userCompany && $user->userCompany->company ? 'bg-primary' : 'bg-warning' }}">
-                                                    {{ $user->userCompany && $user->userCompany->company ? $user->userCompany->company->name : 'No Associated Company' }}
+                                                <!-- Check if company_id is null -->
+                                                <span class="badge {{ $user->company_id ? 'bg-primary' : 'bg-warning' }}">
+                                                    @if($user->company_id)
+                                                        {{ $user->company_id }} <!-- Display company_id if it exists -->
+                                                    @else
+                                                        {{ $user->company->name ?? 'No Company Assigned' }} <!-- If company_id is null, show company name -->
+                                                    @endif
                                                 </span>
                                             </td>
                                             

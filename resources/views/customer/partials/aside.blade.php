@@ -15,6 +15,13 @@
         </a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link " href="{{ route('customer.submitted_companies') }}">
+          <i class="bi bi-grid"></i>
+          <span>Submitted Vendors</span>
+        </a>
+      </li>
+
     </ul>
 
   </aside>

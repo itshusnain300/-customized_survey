@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('question_id')->constrained('questions')->onDelete('cascade');
             $table->string('title');
-            $table->integer('weight');
+            $table->integer('weight')->nullable(); 
             $table->timestamps();
     });
     }

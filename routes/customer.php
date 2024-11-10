@@ -23,6 +23,8 @@ Route::prefix('customer')
         // Route::resource('question', QuestionController::class);
         
         Route::get('/companies', [VendorController::class, 'companyIndex'])->name('companies');
+        
+        Route::get('/companies/submitted', [VendorController::class, 'submittedCompanyIndex'])->name('submitted_companies');
 
         Route::get('/company/{company}/vendor', [VendorController::class, 'show'])->name('company.vendors');
 
@@ -31,6 +33,9 @@ Route::prefix('customer')
         Route::post('/survey/company/{company}vendor/{vendor}/question/{question?}', [AnswerController::class, 'saveAnswer'])->name('question.saveAnswer');
 
         Route::get('/survey/company/{company}/vendor/{vendor}/vendor_submittion/{vendor_submittion}/finish', [QuestionController::class, 'finish'])->name('survey.finish');
+
+
+        Route::get('/survey/vendor/{vendor}/vendor_submittion/{vendor_submittion}', [QuestionController::class, 'showSubmittedVendor'])->name('survey.submission.show');
 
         Route::get('user/{user}/submitted-vendor/{vendor_submittion}', [SubmittedVendorController::class, 'show'])->name('user.submitted_vendor.show');
  

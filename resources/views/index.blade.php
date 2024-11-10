@@ -44,7 +44,7 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Cyco.io</h1>
+        <h1 class="sitename">Vendorwatch.pro</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -91,8 +91,8 @@
           </div>
 
           <div class="col-lg-6  d-flex flex-column justify-content-center" data-aos="fade-in">
-            <h1>Build Your Landing Page With <span>Bootslander</span></h1>
-            <p>We are team of talented designers making websites with Bootstrap</p>
+            <h2>Strengthen Your Supply Chain with Robust Security Evaluations</h2>
+            <p>In today's data-driven world, understanding your audience is key. Our platform offers fully customizable survey and questionnaire solutions designed to meet your unique needs. Whether you’re gathering feedback, conducting market research, or assessing employee satisfaction, we make it easy to create engaging, tailored surveys that drive actionable insights. Trust us to help you connect with your audience on a deeper level.</p>
             <div class="d-flex">
               <a href="#pricing" class="btn-get-started">Get Started</a>
               {{-- <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
@@ -119,61 +119,102 @@
 
     </section><!-- /Hero Section -->
 
-    <!-- About Section -->
+        <!-- About Section -->
     <section id="about" class="about section">
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row align-items-xl-center gy-5">
-
           <div class="col-xl-5 content">
             <h3>About Us</h3>
-            <h2>Ducimus rerum libero reprehenderit cumque</h2>
-            <p>Ipsa sint sit. Quis ducimus tempore dolores impedit et dolor cumque alias maxime. Enim reiciendis minus et rerum hic non. Dicta quas cum quia maiores iure. Quidem nulla qui assumenda incidunt voluptatem tempora deleniti soluta.</p>
+            {{-- <h2>Your Partner in Customized Surveys and Questionnaires</h2> --}}
+            <p>We are passionate about helping businesses protect their sensitive data by promoting transparency and security across their supply chains.
+               Our mission is to simplify the process of vendor assessment, providing the tools and insights you need to evaluate, monitor, and enhance the information security practices of all your partners.
+               From small suppliers to multinational vendors, we work to ensure your entire supply chain is resilient against emerging threats.</p>
             <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
           </div>
-
           <div class="col-xl-7">
             <div class="row gy-4 icon-boxes">
-
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon-box">
-                  <i class="bi bi-buildings"></i>
-                  <h3>Eius provident</h3>
-                  <p>Magni repellendus vel ullam hic officia accusantium ipsa dolor omnis dolor voluptatem</p>
+                  <i class="bi bi-puzzle"></i>
+                  <h3>Customizable Solutions</h3>
+                  <p>Every business is unique; we provide tailored solutions that meet your specific risk and compliance requirements.</p>
                 </div>
               </div> <!-- End Icon Box -->
-
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon-box">
-                  <i class="bi bi-clipboard-pulse"></i>
-                  <h3>Rerum aperiam</h3>
-                  <p>Autem saepe animi et aut aspernatur culpa facere. Rerum saepe rerum voluptates quia</p>
+                  <i class="bi bi-lightbulb"></i>
+                  <h3>Advanced Insights</h3>
+                  <p>Our reporting goes beyond a simple pass/fail; it offers actionable insights to strengthen your supply chain security continuously.</p>
                 </div>
               </div> <!-- End Icon Box -->
-
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
                 <div class="icon-box">
-                  <i class="bi bi-command"></i>
-                  <h3>Veniam omnis</h3>
-                  <p>Omnis perferendis molestias culpa sed. Recusandae quas possimus. Quod consequatur corrupti</p>
+                  <i class="bi bi-award"></i>
+                  <h3>Standard Compliance</h3>
+                  <p>We align our evaluations with industry standards like ISO 27001, and NIST, ensuring thorough and compliant evaluations.</p>
                 </div>
               </div> <!-- End Icon Box -->
-
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
                 <div class="icon-box">
-                  <i class="bi bi-graph-up-arrow"></i>
-                  <h3>Delares sapiente</h3>
-                  <p>Sint et dolor voluptas minus possimus nostrum. Reiciendis commodi eligendi omnis quideme lorenda</p>
+                  <i class="bi bi-briefcase"></i>
+                  <h3>Industry Expertise</h3>
+                  <p>With years of experience in cybersecurity and vendor management, our team brings trusted expertise to every assessment.</p>
                 </div>
               </div> <!-- End Icon Box -->
-
             </div>
           </div>
-
+          
         </div>
       </div>
+    </section>
 
-    </section><!-- /About Section -->
+        <!-- Services Section -->
+    <section id="services" class="services section about">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row align-items-xl-center gy-5">
+          <div class="col-xl-5 content">
+            <h3>Services</h3>
+            <h2>Comprehensive Vendor Security Assessments</h2>
+            <p>Tailored Solutions for Every Vendor, Every Sector.</p>
+            <a href="#" class="read-more"><span>Learn More About Our Services</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+          <div class="col-xl-7">
+            <div class="row gy-4 icon-boxes">
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box">
+                  <i class="bi bi-shield-lock"></i>
+                  <h3>Initial Assessments</h3>
+                  <p>Get an in-depth understanding of each vendor’s security posture before entering a contract. Our experts analyze risks based on industry standards and your unique requirements.</p>
+                </div>
+              </div> <!-- End Icon Box -->
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box">
+                  <i class="bi bi-eye"></i>
+                  <h3>Ongoing Monitoring</h3>
+                  <p>Stay updated with continuous assessments that reflect your vendors' evolving security measures, helping you manage risks in real-time.</p>
+                </div>
+              </div> <!-- End Icon Box -->
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box">
+                  <i class="bi bi-bar-chart-line"></i>
+                  <h3>Risk Scoring</h3>
+                  <p>Access easy-to-understand risk scores that provide an at-a-glance view of each vendor’s security standing.</p>
+                </div>
+              </div> <!-- End Icon Box -->
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon-box">
+                  <i class="bi bi-life-preserver"></i>
+                  <h3>Consulting & Remediation</h3>
+                  <p>Need assistance with non-compliant vendors? Our team provides guidance and actionable steps to help your partners meet your security expectations.</p>
+                </div>
+              </div> <!-- End Icon Box -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      
+    <!-- /About Section -->
 
     <!-- Features Section -->
     {{-- <section id="features" class="features section">
@@ -317,89 +358,81 @@
 
     </section><!-- /Stats Section --> --}}
 
-    <!-- Details Section -->
-    <section id="details" class="details section">
+  <!-- Details Section -->
+<section id="details" class="details section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Details</h2>
-        <div><span>Check Our</span> <span class="description-title">Details</span></div>
-      </div><!-- End Section Title -->
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Details</h2>
+    <div><span>Explore Our</span> <span class="description-title">Features</span></div>
+  </div><!-- End Section Title -->
 
-      <div class="container">
+  <div class="container">
 
-        <div class="row gy-4 align-items-center features-item">
-          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
-            <img src="assets/img/details-1.png" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="bi bi-check"></i><span> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check"></i> <span>Ullam est qui quos consequatur eos accusamus.</span></li>
-            </ul>
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-center features-item">
-          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="assets/img/details-2.png" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
-            <h3>Corporis temporibus maiores provident</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-center features-item">
-          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
-            <img src="assets/img/details-3.png" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7" data-aos="fade-up">
-            <h3>Sunt consequatur ad ut est nulla consectetur reiciendis animi voluptas</h3>
-            <p>Cupiditate placeat cupiditate placeat est ipsam culpa. Delectus quia minima quod. Sunt saepe odit aut quia voluptatem hic voluptas dolor doloremque.</p>
-            <ul>
-              <li><i class="bi bi-check"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check"></i><span> Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check"></i> <span>Facilis ut et voluptatem aperiam. Autem soluta ad fugiat</span>.</li>
-            </ul>
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-center features-item">
-          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out">
-            <img src="assets/img/details-4.png" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up">
-            <h3>Quas et necessitatibus eaque impedit ipsum animi consequatur incidunt in</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
-          </div>
-        </div><!-- Features Item -->
-
+    <div class="row gy-4 align-items-center features-item">
+      <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
+        <img src="assets/img/details-1.png" class="img-fluid" alt="Custom Survey Creation">
       </div>
+      <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
+        <h3>Vendor Selection</h3>
+        <p class="fst-italic">
+          Users choose the vendors they wish to assess from an extensive, customizable list, ensuring all relevant partners are included in the evaluation.        </p>
+        {{-- <ul>
+          <li><i class="bi bi-check"></i><span> Easily customize questions, response types, and design elements.</span></li>
+          <li><i class="bi bi-check"></i> <span> Enhance engagement with visually appealing layouts and interactive elements.</span></li>
+          <li><i class="bi bi-check"></i> <span> Gather reliable data through optimized and user-friendly designs.</span></li>
+        </ul> --}}
+      </div>
+    </div><!-- Features Item -->
 
-    </section><!-- /Details Section -->
+    <div class="row gy-4 align-items-center features-item">
+      <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+        <img src="assets/img/details-2.png" class="img-fluid" alt="Advanced Analytics">
+      </div>
+      <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
+        <h3>Organizational Information Submission</h3>
+        <p class="fst-italic">
+          Users submit detailed answers regarding their organization’s information security posture, providing essential insights and context.
+        </p>
+        {{-- <p>
+          Track and interpret data trends, measure engagement, and uncover patterns in real time. Customize your reports and visualize results to make informed decisions based on clear, accurate data.
+        </p> --}}
+      </div>
+    </div><!-- Features Item -->
+
+    <div class="row gy-4 align-items-center features-item">
+      <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
+        <img src="assets/img/details-3.png" class="img-fluid" alt="Audience Targeting">
+      </div>
+      <div class="col-md-7" data-aos="fade-up">
+        <h3>AI-Powered Analysis</h3>
+        <p>The system’s advanced AI technology analyzes the submitted data, using robust algorithms to assess and evaluate each vendor’s information security standards.</p>
+        {{-- <ul>
+          <li><i class="bi bi-check"></i> <span> Target respondents based on demographics, interests, and behavior.</span></li>
+          <li><i class="bi bi-check"></i><span> Deliver surveys via email, social media, and in-app notifications.</span></li>
+          <li><i class="bi bi-check"></i> <span> Maximize engagement and get quality responses from relevant audiences.</span></li>
+        </ul> --}}
+      </div>
+    </div><!-- Features Item -->
+
+    <div class="row gy-4 align-items-center features-item">
+      <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out">
+        <img src="assets/img/details-4.png" class="img-fluid" alt="Secure Data Management">
+      </div>
+      <div class="col-md-7 order-2 order-md-1" data-aos="fade-up">
+        <h3>Comprehensive Security Assessment Report</h3>
+        <p class="fst-italic">
+          The platform generates a detailed security assessment report, offering users a clear, actionable evaluation of each vendor’s information security posture.        </p>
+        {{-- <p>
+          Our system complies with industry standards for data protection and offers tools to help you manage data access and permissions, giving you confidence that sensitive information is securely handled.
+        </p> --}}
+      </div>
+    </div><!-- Features Item -->
+
+  </div>
+
+</section><!-- /Details Section -->
+
 
     <!-- Gallery Section -->
     {{-- <section id="gallery" class="gallery section">
@@ -719,63 +752,65 @@
 
     </section><!-- /Pricing Section -->
 
-    <!-- Faq Section -->
-    <section id="faq" class="faq section light-background">
+   <!-- Faq Section -->
+<section id="faq" class="faq section light-background">
 
-      <div class="container-fluid">
+  <div class="container-fluid">
 
-        <div class="row gy-4">
+    <div class="row gy-4">
 
-          <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
+      <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
 
-            <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
-              <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-              </p>
+        <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
+          <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+          <p>
+            Here you’ll find answers to some common questions about our services, features, and support options.
+          </p>
+        </div>
+
+        <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="faq-item faq-active">
+            <i class="faq-icon bi bi-question-circle"></i>
+            <h3>How does the subscription process work?</h3>
+            <div class="faq-content">
+              <p>Once you choose a package, you can subscribe through our website. You’ll receive immediate access to the selected features, and you’ll be billed according to your plan's frequency (monthly or annually).</p>
             </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div><!-- End Faq item-->
 
-            <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">
-
-              <div class="faq-item faq-active">
-                <i class="faq-icon bi bi-question-circle"></i>
-                <h3>Non consectetur a erat nam at lectus urna duis?</h3>
-                <div class="faq-content">
-                  <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <i class="faq-icon bi bi-question-circle"></i>
-                <h3>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</h3>
-                <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <i class="faq-icon bi bi-question-circle"></i>
-                <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
-                <div class="faq-content">
-                  <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
+          <div class="faq-item">
+            <i class="faq-icon bi bi-question-circle"></i>
+            <h3>What kind of support can I expect with my subscription?</h3>
+            <div class="faq-content">
+              <p>We offer standard support for all plans, with priority support available for higher-tier packages. Our team is here to help via email and chat, Monday through Friday, from 9 AM to 6 PM.</p>
             </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div><!-- End Faq item-->
 
-          </div>
+          <div class="faq-item">
+            <i class="faq-icon bi bi-question-circle"></i>
+            <h3>Can I upgrade or downgrade my plan at any time?</h3>
+            <div class="faq-content">
+              <p>Yes, you can adjust your plan at any time from your account settings. If you upgrade, you’ll have immediate access to additional features. For downgrades, changes take effect at the end of your current billing cycle.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div><!-- End Faq item-->
 
-          <div class="col-lg-5 order-1 order-lg-2">
-            <img src="assets/img/faq.jpg" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
-          </div>
         </div>
 
       </div>
 
-    </section><!-- /Faq Section -->
+      <div class="col-lg-5 order-1 order-lg-2">
+        <img src="assets/img/faq.jpg" class="img-fluid" alt="FAQ Image" data-aos="zoom-in" data-aos-delay="100">
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<!-- /Faq Section -->
+
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
